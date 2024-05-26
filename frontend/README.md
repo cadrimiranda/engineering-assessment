@@ -1,30 +1,8 @@
-# React + TypeScript + Vite
+## Engineering Assessment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+I have created a small map app to display some markdowns and map the food services with STATUS = "APPROVED" in the database. I didn't handle duplications, and I assumed your current location to be San Francisco downtown (although I've never been there). The app displays a list at the bottom, where you can search for a place name or food, and clicking on an item will redirect you to it.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Initially, I thought of creating an autocomplete feature in the header. However, I found it to be less user-friendly as it only provided the place name. So, I changed it to an input field in the bottom list, which includes more details.
+- I also considered creating a backend Node.js app to serve the data. However, it seemed unnecessary as the frontend could handle the data well.
+- I wish I had more time to add tests. I would have liked to showcase my testing skills, but it can be done later in the process.
+- The poor UI makes me uncomfortable to share it, but improving the user experience would require more time than expected for this task.
