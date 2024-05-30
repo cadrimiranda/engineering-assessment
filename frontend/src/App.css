@@ -41,6 +41,15 @@ body {
 .food-truck-card {
   width: 100%;
   margin: 0 16px;
+  cursor: pointer;
+}
+
+.food-truck-card:hover {
+  background: #f9f9f9;
+}
+
+.food-truck-card:focus, .food-truck-card:active {
+  border-color: #4d4c4c;
 }
 
 .loading-overlay {
