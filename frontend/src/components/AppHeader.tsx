@@ -4,21 +4,25 @@ import { FoodTruck, useAppContext } from "./AppContext";
 
 const FoodTruckAutoComplete = ({
   onSearch,
+  onStartSearching,
 }: {
   onSearch: (options: FoodTruck[] | null) => void;
+  onStartSearching: (searching: boolean) => void;
 }) => {
   const { data } = useAppContext();
   const ref = useRef<number>(null);
 
   const handleSearchDebounce = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onStartSearching(true);
     const searchText = event.target.value;
-    if (searchText.length <= 3) {
-      onSearch(null);
-      return;
-    }
 
     if (ref.current) {
       clearTimeout(ref.current);
+    }
+
+    if (searchText.length <= 3) {
+      onSearch(null);
+      return;
     }
 
     // @ts-expect-error - setTimeout expects a number

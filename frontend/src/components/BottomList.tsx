@@ -24,12 +24,24 @@ function getIcon(type: string) {
 }
 
 const BottomList: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const { data, map } = useAppContext();
   const [searchedData, setSearchedData] = useState<FoodTruck[] | null>(null);
 
   const handleToggleExpand = () => {
     setExpanded(!expanded);
+  };
+
+  const handleStartingLoading = () => {
+    if (!isLoading) {
+      setIsLoading(true);
+    }
+  };
+
+  const handleOnSearch = (options: FoodTruck[] | null) => {
+    setIsLoading(false);
+    setSearchedData(options);
   };
 
   return (
@@ -51,11 +63,17 @@ const BottomList: React.FC = () => {
         ) : (
           <CaretUpOutlined onClick={handleToggleExpand} />
         )}
-        {expanded && <FoodTruckAutoComplete onSearch={setSearchedData} />}
+        {expanded && (
+          <FoodTruckAutoComplete
+            onSearch={handleOnSearch}
+            onStartSearching={handleStartingLoading}
+          />
+        )}
       </Flex>
 
       <List
-        dataSource={searchedData || data}
+        loading={isLoading}
+        dataSource={searchedData ? searchedData : data}
         renderItem={(item) => (
           <List.Item
             onClick={() => {
